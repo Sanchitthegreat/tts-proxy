@@ -17,6 +17,7 @@ app.get('/', (req, res) => res.send('Proxy OK'));
 app.get('/proxy', (req, res) => {
 const ts = encodeURIComponent(req.query.ts || Date.now());
 const targetUrl = https://tts.cognitive.microsoft.com/consumer/speech/synthesize/readaloud/edge/v1?trustedclienttoken=1&ts=${ts};
+
 https.get(targetUrl, (upRes) => {
 if (upRes.headers['content-type']) res.set('Content-Type', upRes.headers['content-type']);
 upRes.pipe(res);
